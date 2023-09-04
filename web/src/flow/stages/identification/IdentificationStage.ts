@@ -225,6 +225,8 @@ export class IdentificationStage extends BaseStage<
                     name="uidField"
                     placeholder=${label}
                     autofocus=""
+                    autocapitalize="off"
+                    autocorrect="off"
                     autocomplete="username"
                     class="pf-c-form-control"
                     required

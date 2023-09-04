@@ -64,6 +64,9 @@ i18n-extract-core:
 gen-build:
 	AUTHENTIK_DEBUG=true ak make_blueprint_schema > blueprints/schema.json
 	AUTHENTIK_DEBUG=true ak spectacular --file schema.yml
+	AUTHENTIK_DEBUG=true ak spectacular \
+		--urlconf=authentik.stages.authenticator_mobile.urls \
+		--file authentik/stages/authenticator_mobile/schema_mobile.yml
 
 gen-changelog:
 	git log --pretty=format:" - %s" $(shell git describe --tags $(shell git rev-list --tags --max-count=1))...$(shell git branch --show-current) | sort > changelog.md
