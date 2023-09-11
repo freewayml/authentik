@@ -30,7 +30,6 @@ class Command(BaseCommand):
             task_events=True,
             beat=True,
             schedule_filename=f"{tempdir}/celerybeat-schedule",
-            queues=["authentik", "authentik_scheduled", "authentik_events"],
         )
         for task in CELERY_APP.tasks:
             LOGGER.debug("Registered task", task=task)

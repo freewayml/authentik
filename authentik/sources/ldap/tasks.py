@@ -50,10 +50,12 @@ def ldap_sync_single(source_pk: str):
         group(
             ldap_sync_paginator(source, UserLDAPSynchronizer)
             + ldap_sync_paginator(source, GroupLDAPSynchronizer),
+            priority=CONFIG.get_int("workers.priority.sync"),
         ),
         # Membership sync needs to run afterwards
         group(
             ldap_sync_paginator(source, MembershipLDAPSynchronizer),
+            priority=CONFIG.get_int("workers.priority.sync"),
         ),
     )
     task()

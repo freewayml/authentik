@@ -110,3 +110,10 @@ web:
   # No default here as it's set dynamically
   # workers: 2
   threads: 4
+
+workers:
+  priority:
+    default: 4
+    scheduled: 9
+    sync: 9
+    events: 8
