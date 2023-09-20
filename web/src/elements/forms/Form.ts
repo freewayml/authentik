@@ -170,7 +170,7 @@ export abstract class Form<T> extends AKElement {
                 inputElement.tagName.toLowerCase() === "input" &&
                 inputElement.type === "checkbox"
             ) {
-                json[element.name] = inputElement.checked;
+                this.assignValue(element, inputElement.checked, json);
             } else if ("selectedFlow" in inputElement) {
                 json[element.name] = inputElement.value;
             } else if (inputElement.tagName.toLowerCase() === "ak-search-select") {
@@ -185,14 +185,14 @@ export abstract class Form<T> extends AKElement {
                     throw exc;
                 }
             } else {
-                this.serializeFieldRecursive(inputElement, inputElement.value, json);
+                this.assignValue(element, inputElement.value, json);
             }
         });
         return json as unknown as T;
     }
 
-    private serializeFieldRecursive(
-        element: HTMLInputElement,
+    private assignValue(
+        element: HorizontalFormElement,
         value: unknown,
         json: { [key: string]: unknown },
     ): void {
