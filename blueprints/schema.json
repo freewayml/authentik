@@ -1576,7 +1576,8 @@
                                 "enum": [
                                     "absent",
                                     "present",
-                                    "created"
+                                    "created",
+                                    "must_created"
                                 ],
                                 "default": "present"
                             },
@@ -1612,7 +1613,8 @@
                                 "enum": [
                                     "absent",
                                     "present",
-                                    "created"
+                                    "created",
+                                    "must_created"
                                 ],
                                 "default": "present"
                             },
@@ -5920,6 +5922,12 @@
                     ],
                     "minLength": 1,
                     "title": "Friendly name"
+                },
+                "firebase_config": {
+                    "type": "object",
+                    "additionalProperties": true,
+                    "title": "Firebase config",
+                    "description": "temp"
                 }
             },
             "required": []
