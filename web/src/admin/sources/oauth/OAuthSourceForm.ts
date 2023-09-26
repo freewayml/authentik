@@ -191,7 +191,11 @@ export class OAuthSourceForm extends ModelForm<OAuthSource, string> {
                           >
                               <input
                                   type="text"
-                                  value="${ifDefined(this.instance?.oidcWellKnownUrl)}"
+                                  value="${first(
+                                      this.instance?.oidcWellKnownUrl,
+                                      this.providerType.oidcWellKnownUrl,
+                                      "",
+                                  )}"
                                   class="pf-c-form-control"
                               />
                               <p class="pf-c-form__helper-text">
@@ -206,7 +210,11 @@ export class OAuthSourceForm extends ModelForm<OAuthSource, string> {
                           >
                               <input
                                   type="text"
-                                  value="${ifDefined(this.instance?.oidcJwksUrl)}"
+                                  value="${first(
+                                      this.instance?.oidcJwksUrl,
+                                      this.providerType.oidcJwksUrl,
+                                      "",
+                                  )}"
                                   class="pf-c-form-control"
                               />
                               <p class="pf-c-form__helper-text">
